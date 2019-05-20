@@ -1,0 +1,84 @@
+                            WordFootball V. 1.0
+
+Language game for OS/2 to check words, Public Domain, source code included
+
+
+I Preface
+---------
+This program is the result of my first steps into OS/2 programming.
+I know that the program needs some further development, but I think
+it is usable. The problem for me was that I prefer coding in PASCAL.
+Now that there are some good compilers available I switched over
+immediately. But I didn't want to do the whole thing again. This is 
+why I declare the program and its source public domain. 
+The aim of the program is to check the spelling of a word and its
+correct translation. I was looking for some motivation for the student.
+Well, the result was football.
+
+
+II Features
+-----------
+- extra version for German available
+- checks spelling of words
+- you can use an ASCII file as database
+- you can have a different task for each question
+
+III Limits
+----------
+- only one answer possible
+- doesn't save options 
+- very limited help
+- no further development
+
+IV Packet
+---------
+The packet consists of the following files:
+
+        wordfoot.exe - executable file
+        wordfoot.txt - documentary in English
+	wordfoot.c   - C source code
+	wordfoot.h   - include file
+	wordfoot.rc  - resource file
+	wordfoot.ico - program icon
+	wordfoot.bmp - background bitmap
+        file_id.diz  - short description for use with BBS
+	frage_wo.dta - question words
+	perfect.dta  - perfect participle of irregular verbs
+	pronomen.dta - personal pronouns and their object and possessive forms
+	unr_verb.dta - past participle of irregular verbs
+
+
+V Database and what the program does
+------------------------------------
+As mentioned above this program uses an ASCII File as a database. The file
+must have the following format: 
+
+- every task must be in one line
+- the first part of each line is the task
+- then a | (ASCII 124) follows
+- the second part is the word the student has to translate
+- then a # (ASCII 35) follows
+- the third part is the answer
+
+The program simply checks if the second and the third part are exactly 
+the same. It doesn't even strip spaces from a word. I encluded some 
+sample files. The files the program uses normally follow the naming
+convention *.dta. That is what the file dialogue is looking for. But 
+you can also use other endings. 
+
+
+VI Miscelleanous
+----------------
+WordFootball is public domain. You can distribute the program in any way 
+AS LONG AS YOU DON'T TAKE MONEY FOR IT AND ALTER THE SOURCES in this 
+package! You can of course distribute a different package. 
+Also I don't take ANY responsibility for any damages WordFootball does 
+to your hardware or the contents of your harddisk or whatever. So you use 
+it entirely at YOUR OWN RISK!
+I use the program myself so that I can be reasonably sure that there are
+no major bugs in it. 
+The program was written with WATCOM C/C++ 10.0a. If you alter the sources
+or if you like the program, I would ask you to let me know. If you have
+any questions about the program or its use don't hesitate to write to me.
+
+Torsten Schulz       2:249/1170@FIDONET   TorSchulz@AOL.COM

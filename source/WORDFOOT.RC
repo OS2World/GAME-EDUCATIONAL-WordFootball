@@ -1,0 +1,70 @@
+// wordfoot.rc
+
+#include <os2.h>
+#include "wordfoot.h"
+
+// Programm Icon
+ICON    ID_ClientWindow f:\watcom\wordfoot\wordfoot.ico
+BITMAP IDB_Platz        f:\watcom\wordfoot\wordfoot.bmp
+
+// Menustruktur
+MENU ID_ClientWindow PRELOAD
+{
+SUBMENU "~File", IDM_File
+        {
+        MENUITEM "~Open\tF2", IDM_Choose, MIS_TEXT
+        MENUITEM "", -1, MIS_SEPARATOR
+        MENUITEM "E~xit\tAlt+F4", IDM_Exit, MIS_TEXT
+        }
+MENUITEM "~Play", IDM_Play, MIS_TEXT, MIA_DISABLED
+MENUITEM "~Options", IDM_Options, MIS_TEXT
+SUBMENU "~Help", IDM_Info
+        {
+        MENUITEM "G~eneral", IDM_Help, MIS_HELP
+        MENUITEM "", -1, MIS_SEPARATOR
+        MENUITEM "~About...", IDM_About, MIS_TEXT
+        }
+}
+
+// Short Cut Tabelle
+
+ACCELTABLE ID_ClientWindow PRELOAD
+	{
+	VK_F2, IDM_Choose, VIRTUALKEY		// F2 - Datei Ausw„hlen
+	VK_F3, IDM_Play, VIRTUALKEY		// F3 - Spielen
+	VK_F4, IDM_Exit, VIRTUALKEY, ALT	// Alt F4 - Beenden
+	}
+
+
+// Dialog zur Anzeige der W”rter und Eingabe der Antwort
+
+DLGTEMPLATE ID_Dialog PRELOAD MOVEABLE DISCARDABLE
+BEGIN
+        DIALOG "Your task:", ID_Dialog, 130,100,204,75, WS_VISIBLE | WS_SAVEBITS, FCF_DLGBORDER | FCF_TITLEBAR
+        BEGIN
+                CTEXT "", ID_Aufg, 7, 60, 190, 8
+		      CONTROL "", -1, 13, 44, 176, 12 WC_STATIC, 
+			 SS_FGNDFRAME | WS_VISIBLE
+                CTEXT " ", ID_Wort, 15, 46, 172, 8
+                ENTRYFIELD "", ID_Eing, 7, 22, 190, 8,
+                        ES_LEFT | ES_MARGIN | ES_AUTOTAB
+                DEFPUSHBUTTON "~Ok", DID_OK, 55, 3, 35, 12
+                PUSHBUTTON "~Cancel", DID_CANCEL, 110, 3, 35, 12
+        END
+END
+
+// Dialog Optionen
+
+DLGTEMPLATE ID_Option LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+        DIALOG "Options", ID_Option, 120,80,150,65, WS_VISIBLE | WS_SAVEBITS, FCF_DLGBORDER | FCF_TITLEBAR
+        BEGIN
+                CTEXT "How words are chosen:", ID_Text, 3, 45, 100, 8
+                AUTORADIOBUTTON "by chance", ID_Zufall, 15, 30, 100, 12, WS_GROUP 
+                AUTORADIOBUTTON "by the sequence of the file", ID_Reihe, 15, 20, 110, 12
+                DEFPUSHBUTTON "~Ok", DID_OK, 25, 3, 35, 12
+                PUSHBUTTON "~Cancel", DID_CANCEL, 80, 3, 35, 12
+        END
+END
+
+
